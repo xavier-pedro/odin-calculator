@@ -32,14 +32,32 @@ for (let i = 0; i < button.length; i++) {
           console.log(operator);
         }
       });
-    } else if (operator !== undefined) {
+    } else if (operator !== undefined && typeButton !== "action") {
       const buttonClass = document.querySelector(".operator-select");
       if (buttonClass) {
         buttonClass.classList.remove("operator-select");
       }
       secondNumber += valueButton;
       visor.textContent = secondNumber;
+    } 
+
+    if(valueButton === "="){
+      switch (operator) {
+        case "+":
+          visor.textContent = add(Number(firstNumber), Number(secondNumber));
+          break;
+        case "-":
+          visor.textContent = subtract(Number(firstNumber), Number(secondNumber));
+          break;
+        case "*":
+          visor.textContent = multiply(Number(firstNumber), Number(secondNumber));
+          break;
+        case "/":
+          visor.textContent = divide(Number(firstNumber), Number(secondNumber));
+          break;
+      }
     }
+
   });
 }
 
@@ -54,6 +72,7 @@ button.forEach((item) => {
 });
 
 function add(firstNumber, secondNumber) {
+
   return firstNumber + secondNumber;
 }
 function subtract(firstNumber, secondNumber) {
