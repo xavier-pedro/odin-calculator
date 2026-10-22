@@ -1,19 +1,19 @@
 const buttonsData = [
   {
     label: "Limpar tudo",
-    value: "/icons/allclear.svg",
+    value: "icons/allclear.svg",
     type: "action",
     isIcon: true,
   },
   {
     label: "Limpar",
-    value: "/icons/clear.svg",
+    value: "icons/clear.svg",
     type: "action",
     isIcon: true,
   },
   {
     label: "Ícone do github",
-    value: "/icons/github.png",
+    value: "icons/github.png",
     type: "action",
     isIcon: true,
   },
