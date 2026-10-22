@@ -47,7 +47,7 @@ for (let i = 0; i < button.length; i++) {
       }
       secondNumber += valueButton;
       visor.textContent = secondNumber;
-    } else if (button[i].dataset.value === "/icons/allclear.svg") {
+    } else if (button[i].dataset.value === "icons/allclear.svg") {
       firstNumber = 0;
       operator = undefined;
       secondNumber = "";
