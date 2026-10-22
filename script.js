@@ -1,6 +1,35 @@
 let firstNumber = 0;
-let secondNumber = 0;
+let secondNumber;
 let operator;
+const numbers = ["0","1","2","3","4","5","6","7","8","9"]
+
+const visor = document.querySelector("#visor")
+visor.textContent = firstNumber
+
+const button = document.querySelectorAll(".button-calculator")
+
+
+for(let i = 0; i < button.length; i++){
+
+    let valueButton = button[i].dataset.value
+
+    button[i].addEventListener("click", () => {
+       if (visor.textContent === "0" && numbers.includes(valueButton)) {
+         firstNumber = valueButton;
+         visor.textContent = firstNumber;
+       } else if (operator === undefined && numbers.includes(valueButton)) {
+         firstNumber += valueButton;
+         visor.textContent = firstNumber;
+       }
+    })
+}
+
+button.forEach(item => {
+    item.addEventListener("click", () => {
+        
+    })
+})
+
 
 function add(firstNumber, secondNumber) {
     return firstNumber + secondNumber
