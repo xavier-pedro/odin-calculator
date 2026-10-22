@@ -127,6 +127,7 @@ function showButtons(buttons) {
     button.classList.add("button-calculator");
 
     button.dataset.value = buttons[i].value
+    button.dataset.type = buttons[i].type
 
     if(buttons[i].isIcon === true){
 

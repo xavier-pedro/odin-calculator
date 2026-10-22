@@ -68,3 +68,8 @@ body{
     width: 128px;
     
 }
+
+.operator-select{
+    background-color: white;
+    color: black;
+}
