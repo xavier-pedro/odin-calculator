@@ -4,6 +4,7 @@
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
+    user-select: none;
 }
 body{
     background-color: black;
@@ -32,12 +33,14 @@ body{
     height: 100px;
     font-size: 60px;
     font-weight: bold;
+    user-select: text;
 }
 #buttons{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    width: 264px;
     height: auto;
+    gap: 8px;
 }
 .button-calculator{
     width: 60px;
@@ -59,7 +62,9 @@ body{
     background-color: white;
     color: black;
 }
-.button-calculator:active{
-    background-color: rgba(255, 255, 255, 0.50);
-    transform: scale(0.98);
+.button-result{
+    color: black;
+    background: linear-gradient(315deg, #0088FF, #2F9EFF);
+    width: 128px;
+    
 }
