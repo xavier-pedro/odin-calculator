@@ -2,13 +2,13 @@ const buttonsData = [
   {
     label: "Limpar tudo",
     value: "icons/allclear.svg",
-    type: "action",
+    type: "allClear",
     isIcon: true,
   },
   {
     label: "Limpar",
     value: "icons/clear.svg",
-    type: "action",
+    type: "clear",
     isIcon: true,
   },
   {
@@ -104,7 +104,7 @@ const buttonsData = [
   {
     label: ",",
     value: ",",
-    type: "action",
+    type: ",",
     isIcon: false,
   },
   {
