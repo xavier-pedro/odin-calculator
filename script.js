@@ -48,6 +48,8 @@ for (let i = 0; i < button.length; i++) {
       secondNumber += valueButton;
       visor.textContent = secondNumber;
     } else if (button[i].dataset.value === "icons/allclear.svg") {
+      let hasClass = document.querySelector(".operator-select")
+      hasClass.classList.remove("operator-select")
       firstNumber = 0;
       operator = undefined;
       secondNumber = "";
