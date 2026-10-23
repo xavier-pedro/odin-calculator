@@ -19,15 +19,16 @@ for (let i = 0; i < button.length; i++) {
     } else if (operator === undefined && typeButton === "number") {
       firstNumber += valueButton;
       visor.textContent = firstNumber;
-    } else if (typeButton === "operator" && firstNumber > 0) {
+    } else if (typeButton === "operator" && firstNumber >= "0") {
       let operatorButtons = document.querySelectorAll('[data-type="operator"]');
 
       if (secondNumber != "") {
-        firstNumber = operate(operator, firstNumber, secondNumber)
+        let buttonFloat = document.querySelector('[data-value=","]');
+        buttonFloat.disabled = false;
+        firstNumber = operate(operator, firstNumber, secondNumber);
         secondNumber = "";
-        visor.textContent = firstNumber
-        
-      } 
+        visor.textContent = firstNumber;
+      }
 
       operatorButtons.forEach((button) => {
         let hasClass = button.classList.contains("operator-select");
@@ -39,8 +40,7 @@ for (let i = 0; i < button.length; i++) {
           operator = valueButton;
         }
       });
-    
-    } else if ( operator !== undefined && typeButton === "number") {
+    } else if (operator !== undefined && typeButton === "number") {
       const buttonClass = document.querySelector(".operator-select");
       if (buttonClass) {
         buttonClass.classList.remove("operator-select");
@@ -48,25 +48,63 @@ for (let i = 0; i < button.length; i++) {
       secondNumber += valueButton;
       visor.textContent = secondNumber;
     } else if (button[i].dataset.value === "icons/allclear.svg") {
-      let hasClass = document.querySelector(".operator-select")
-      if(hasClass){
-      hasClass.classList.remove("operator-select")
+              let buttonFloat = document.querySelector('[data-value=","]');
+        buttonFloat.disabled = false;
+
+      let hasClass = document.querySelector(".operator-select");
+      if (hasClass) {
+        hasClass.classList.remove("operator-select");
       }
-      firstNumber = 0;
+      firstNumber = "0";
       operator = undefined;
       secondNumber = "";
       visor.textContent = firstNumber;
+    }
 
-    } 
+    if (
+      valueButton === "," &&
+      (visor.textContent === "0" || firstNumber >= "0") &&
+      operator === undefined
+    ) {
+
+      if(firstNumber.split("").includes(",")){
+        let buttonFloat = document.querySelector('[data-value=","]');
+        buttonFloat.disabled = true;
+      } else{
+      firstNumber += ",";
+      visor.textContent = firstNumber;
+      }
+    } else if (
+      valueButton === "," &&
+      firstNumber >= "0" &&
+      operator !== undefined
+    ) {
+      if (secondNumber.split("").includes(",")) {
+        let buttonFloat = document.querySelector('[data-value=","]');
+        buttonFloat.disabled = true;
+      } else if (secondNumber === "") {
+        let buttonFloat = document.querySelector('[data-value=","]');
+        secondNumber = "0,";
+        buttonFloat.disabled = false;
+        visor.textContent = secondNumber;
+      } else {
+        let buttonFloat = document.querySelector('[data-value=","]');
+        secondNumber += ",";
+        buttonFloat.disabled = false;
+        visor.textContent = secondNumber;
+      }
+    }
 
     if (valueButton === "=" && operator !== undefined) {
+      let buttonFloat = document.querySelector('[data-value=","]');
+      buttonFloat.disabled = false;
       let result = operate(operator, firstNumber, secondNumber);
       firstNumber = "";
       operator = undefined;
       secondNumber = "";
       console.log(firstNumber);
       visor.textContent = result;
-    } 
+    }
   });
 }
 
