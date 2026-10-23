@@ -49,7 +49,9 @@ for (let i = 0; i < button.length; i++) {
       visor.textContent = secondNumber;
     } else if (button[i].dataset.value === "icons/allclear.svg") {
       let hasClass = document.querySelector(".operator-select")
+      if(hasClass){
       hasClass.classList.remove("operator-select")
+      }
       firstNumber = 0;
       operator = undefined;
       secondNumber = "";
