@@ -110,7 +110,7 @@ const buttonsData = [
   {
     label: "=",
     value: "=",
-    type: "action",
+    type: "result",
     isIcon: false,
   },
 ];
