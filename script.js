@@ -47,12 +47,7 @@ buttons.forEach((button) => {
 
     }
 
-    if (typeButton === "operator" && !firstNumber && !secondNumber) {
-      button.disabled = true;
-      button.disabled = false;
-    }
-
-    if (typeButton === "operator" && operator && firstNumber && secondNumber) {
+    if (typeButton === "operator" && operator && (firstNumber || result) && secondNumber) {
       firstNumber = operate(operator, firstNumber, secondNumber);
       operator = valueButton;
       console.log(operator);
@@ -60,19 +55,7 @@ buttons.forEach((button) => {
       visor.textContent = firstNumber;
     }
 
-    if (typeButton === "operator" && !operator && result && !secondNumber) {
-      operator = valueButton;
-      button.classList.add("operator-select");
-    }
-
-    if (typeButton === "operator" && operator && result && secondNumber) {
-      result = operate(operator, result, secondNumber);
-      secondNumber = "";
-      operator = valueButton;
-      visor.textContent = result;
-    }
-
-    if (typeButton === "operator" && firstNumber) {
+    if (typeButton === "operator" && !operator && (result || firstNumber) && !secondNumber) {
       operator = valueButton;
       button.classList.add("operator-select");
     }
@@ -104,6 +87,8 @@ buttons.forEach((button) => {
       secondNumber = ""
       operator = ""
       visor.textContent = "0"
+
+      let selectOperator = document.querySelector(".operator-select");
       if(secondNumber){
       selectOperator.classList.remove("operator-select");
       }

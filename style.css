@@ -61,6 +61,12 @@ body{
 .button-calculator:hover{
     background-color: white;
     color: black;
+    font-weight: bold;
+    
+    
+}
+.button-calculator:hover img {
+    filter: brightness(0); 
 }
 .button-result{
     color: black;
