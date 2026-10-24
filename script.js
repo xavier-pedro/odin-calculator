@@ -109,15 +109,20 @@ buttons.forEach((button) => {
       if (result) {
         result = "";
         firstNumber = valueButton;
-      } else {
-        firstNumber += valueButton;
-      }
+      } else if (firstNumber === "0"){
+        firstNumber = valueButton;
+      }else {
+        firstNumber += valueButton;}
 
       visor.textContent = firstNumber;
     }
 
     if (typeButton === "number" && operator && (result || firstNumber)) {
+      if(secondNumber === "0"){
+        secondNumber = valueButton
+      } else{
       secondNumber += valueButton;
+      }
       visor.textContent = secondNumber;
       let selectOperator = document.querySelector(".operator-select");
       if (selectOperator) {
