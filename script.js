@@ -126,14 +126,22 @@ buttons.forEach((button) => {
           firstNumber = "0,"
           visor.textContent = firstNumber
         }else if (firstNumber && !operator && !secondNumber && !result) {
-          firstNumber += ","
-          visor.textContent = firstNumber;
+
+          if(!firstNumber.includes(",")){
+              firstNumber += ",";
+              visor.textContent = firstNumber;
+          }
+          
         } else if ((firstNumber || result) && operator && !secondNumber){
           secondNumber = "0,"
           visor.textContent = secondNumber;
         } else if ((firstNumber || result) && operator && secondNumber){
-          secondNumber += ","
-          visor.textContent = secondNumber;
+
+          if (!secondNumber.includes(",")) {
+            secondNumber += ",";
+            visor.textContent = secondNumber;
+          }
+          
         }
           
     }
