@@ -20,11 +20,11 @@ function operate(operator, firstNumber, secondNumber) {
   }
 }
 
-function isFloat(result){
-  if(!Number.isInteger(result)){
-    return result.toFixed(2)
+function isFloat(result) {
+  if (!Number.isInteger(result)) {
+    return result.toFixed(2);
   } else {
-    return result
+    return result;
   }
 }
 
@@ -109,19 +109,20 @@ buttons.forEach((button) => {
       if (result) {
         result = "";
         firstNumber = valueButton;
-      } else if (firstNumber === "0"){
+      } else if (firstNumber === "0") {
         firstNumber = valueButton;
-      }else {
-        firstNumber += valueButton;}
+      } else {
+        firstNumber += valueButton;
+      }
 
       visor.textContent = firstNumber;
     }
 
     if (typeButton === "number" && operator && (result || firstNumber)) {
-      if(secondNumber === "0"){
-        secondNumber = valueButton
-      } else{
-      secondNumber += valueButton;
+      if (secondNumber === "0") {
+        secondNumber = valueButton;
+      } else {
+        secondNumber += valueButton;
       }
       visor.textContent = secondNumber;
       let selectOperator = document.querySelector(".operator-select");
@@ -184,23 +185,21 @@ buttons.forEach((button) => {
       }
     }
 
-    if(typeButton === "clear"){
-      if(!operator && !result && !firstNumber && !secondNumber){
+    if (typeButton === "clear") {
+      if (!operator && !result && !firstNumber && !secondNumber) {
         button.disabled = true;
         button.disabled = false;
       }
 
-      if(result && !operator && !secondNumber){
+      if (result && !operator && !secondNumber) {
         result = "";
-        visor.textContent = 0
+        visor.textContent = 0;
       }
 
-      
-
-      if(firstNumber && !operator && !secondNumber){
-        firstNumber = firstNumber.substring(0, firstNumber.length - 1)
-        firstNumber = firstNumber ? firstNumber : "0"
-        visor.textContent = firstNumber
+      if (firstNumber && !operator && !secondNumber) {
+        firstNumber = firstNumber.substring(0, firstNumber.length - 1);
+        firstNumber = firstNumber ? firstNumber : "0";
+        visor.textContent = firstNumber;
       }
 
       if ((result || firstNumber) && operator && !secondNumber) {
@@ -209,16 +208,14 @@ buttons.forEach((button) => {
         selectOperator.classList.remove("operator-select");
       }
 
-      if((result || firstNumber) && operator && secondNumber){
+      if ((result || firstNumber) && operator && secondNumber) {
         secondNumber = secondNumber.substring(0, secondNumber.length - 1);
         secondNumber = secondNumber ? secondNumber : "0";
         visor.textContent = secondNumber;
       }
-      
-
     }
 
-    if(typeButton === "github"){
+    if (typeButton === "github") {
       window.open("https://github.com/xavier-pedro/odin-calculator", "_blank");
     }
   });

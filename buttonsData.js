@@ -115,38 +115,30 @@ const buttonsData = [
   },
 ];
 
-
 function showButtons(buttons) {
   let divButtons = document.querySelector("#buttons");
 
-  
+  buttons.forEach((button) => {
+    const buttonUI = document.createElement("button");
+    buttonUI.classList.add("button-calculator");
 
-  for (let i = 0; i < buttons.length; i++) {
+    buttonUI.dataset.value = button.value;
+    buttonUI.dataset.type = button.type;
 
-    const button = document.createElement("button");
-    button.classList.add("button-calculator");
-
-    button.dataset.value = buttons[i].value
-    button.dataset.type = buttons[i].type
-
-    if(buttons[i].isIcon === true){
-
-      const image = document.createElement('img')
-      image.src = `${buttons[i].value}`;
-      button.appendChild(image)
-      divButtons.appendChild(button);
-
+    if (button.isIcon) {
+      const image = document.createElement("img");
+      image.src = `${button.value}`;
+      buttonUI.appendChild(image);
+      divButtons.appendChild(buttonUI);
     } else {
-
-    button.textContent = buttons[i].label;
-    divButtons.appendChild(button);}
-
-    if(buttons[i].label === "="){
-
-      button.classList.add('button-result')
-
+      buttonUI.textContent = button.label;
+      divButtons.appendChild(buttonUI);
     }
-  }
+
+    if (button.label === "=") {
+      buttonUI.classList.add("button-result");
+    }
+  });
 }
 
 showButtons(buttonsData);
