@@ -22,9 +22,9 @@ function operate(operator, firstNumber, secondNumber) {
 
 function isFloat(result) {
   if (!Number.isInteger(result)) {
-    return result.toFixed(2);
+    return String(result.toFixed(2));
   } else {
-    return result;
+    return String(result);
   }
 }
 
