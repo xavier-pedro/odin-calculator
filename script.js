@@ -1,4 +1,7 @@
 function operate(operator, firstNumber, secondNumber) {
+  if(operator === "/" & firstNumber >= "0" && secondNumber === "0"){
+    return "Erro!"
+  } else{
   switch (operator) {
     case "+":
       return Number(firstNumber) + Number(secondNumber);
@@ -8,6 +11,7 @@ function operate(operator, firstNumber, secondNumber) {
       return Number(firstNumber) * Number(secondNumber);
     case "/":
       return Number(firstNumber) / Number(secondNumber);
+  }
   }
 }
 
@@ -39,6 +43,10 @@ buttons.forEach((button) => {
   secondNumber = "";
   operator = "";
   visor.textContent = result;
+  if(result === "Erro!"){
+    result = "";
+  }
+
   let selectOperator = document.querySelector(".operator-select");
 
   if(selectOperator){
@@ -48,11 +56,14 @@ buttons.forEach((button) => {
     }
 
     if (typeButton === "operator" && operator && (firstNumber || result) && secondNumber) {
-      firstNumber = operate(operator, firstNumber, secondNumber);
+      result = operate(operator, firstNumber, secondNumber);
+      firstNumber = "";
       operator = valueButton;
-      console.log(operator);
       secondNumber = "";
-      visor.textContent = firstNumber;
+      visor.textContent = result;
+      if (result === "Erro!") {
+        result = "";
+      }
     }
 
     if (typeButton === "operator" && !operator && (result || firstNumber) && !secondNumber) {
@@ -89,10 +100,35 @@ buttons.forEach((button) => {
       visor.textContent = "0"
 
       let selectOperator = document.querySelector(".operator-select");
-      if(secondNumber){
-      selectOperator.classList.remove("operator-select");
+
+      if (selectOperator) {
+        selectOperator.classList.remove("operator-select");
       }
     }
+
+    if(typeButton === "operator" && operator && (firstNumber || result) && !secondNumber){
+     let selectOperator = document.querySelector(".operator-select");
+
+     if (selectOperator) {
+       selectOperator.classList.remove("operator-select");
+     }
+
+     operator = valueButton;
+     button.classList.add("operator-select")
+    }
+
+    // if(typeButton === ","){
+    //     if(result && !operator && !secondNumber){
+    //       firstNumber = "0,"
+    //     } else if (firstNumber && !operator && !secondNumber) {
+    //       firstNumber += ","
+    //     } else if ((firstNumber || result) && operator && !secondNumber){
+    //       secondNumber = "0,"
+    //     } else if ((firstNumber || result) && operator && secondNumber){
+    //       secondNumber += ","
+    //     }
+    //       visor.textContent = firstNumber;
+    // }
 
   
 

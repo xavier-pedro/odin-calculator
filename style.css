@@ -78,4 +78,5 @@ body{
 .operator-select{
     background-color: white;
     color: black;
+    font-weight: bold;
 }
