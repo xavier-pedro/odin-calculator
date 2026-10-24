@@ -14,7 +14,7 @@ const buttonsData = [
   {
     label: "Ícone do github",
     value: "icons/github.png",
-    type: "action",
+    type: "github",
     isIcon: true,
   },
   {

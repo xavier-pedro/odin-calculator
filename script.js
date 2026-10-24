@@ -217,5 +217,9 @@ buttons.forEach((button) => {
       
 
     }
+
+    if(typeButton === "github"){
+      window.open("https://github.com/xavier-pedro/odin-calculator", "_blank");
+    }
   });
 });
