@@ -117,18 +117,26 @@ buttons.forEach((button) => {
      button.classList.add("operator-select")
     }
 
-    // if(typeButton === ","){
-    //     if(result && !operator && !secondNumber){
-    //       firstNumber = "0,"
-    //     } else if (firstNumber && !operator && !secondNumber) {
-    //       firstNumber += ","
-    //     } else if ((firstNumber || result) && operator && !secondNumber){
-    //       secondNumber = "0,"
-    //     } else if ((firstNumber || result) && operator && secondNumber){
-    //       secondNumber += ","
-    //     }
-    //       visor.textContent = firstNumber;
-    // }
+    if(typeButton === ","){
+        if(result && !operator && !secondNumber && !firstNumber){
+          firstNumber = "0,"
+          visor.textContent = firstNumber;
+          result = "";
+        } else if(!firstNumber && !operator && !secondNumber && !result){
+          firstNumber = "0,"
+          visor.textContent = firstNumber
+        }else if (firstNumber && !operator && !secondNumber && !result) {
+          firstNumber += ","
+          visor.textContent = firstNumber;
+        } else if ((firstNumber || result) && operator && !secondNumber){
+          secondNumber = "0,"
+          visor.textContent = secondNumber;
+        } else if ((firstNumber || result) && operator && secondNumber){
+          secondNumber += ","
+          visor.textContent = secondNumber;
+        }
+          
+    }
 
   
 
