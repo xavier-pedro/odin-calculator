@@ -44,12 +44,7 @@ buttons.forEach((button) => {
   let selectOperator = document.querySelector(".operator-select");
 
   button.addEventListener("click", () => {
-    if (
-      typeButton === "result" &&
-      operator &&
-      (firstNumber || result) &&
-      secondNumber
-    ) {
+    if (typeButton === "result" && operator && (firstNumber || result) && secondNumber) {
       if (firstNumber) {
         result = operate(operator, firstNumber, secondNumber);
       } else {
@@ -71,13 +66,14 @@ buttons.forEach((button) => {
       }
     }
 
-    if (
-      typeButton === "operator" &&
-      operator &&
-      (firstNumber || result) &&
-      secondNumber
-    ) {
-      result = operate(operator, firstNumber, secondNumber);
+    if (typeButton === "operator" && operator && (firstNumber || result) && secondNumber) {
+      if(firstNumber){
+              result = operate(operator, firstNumber, secondNumber);
+
+      } else if (result){
+      result = operate(operator, result, secondNumber);
+
+      }
       firstNumber = "";
       operator = valueButton;
       secondNumber = "";
@@ -90,22 +86,12 @@ buttons.forEach((button) => {
       }
     }
 
-    if (
-      typeButton === "operator" &&
-      !operator &&
-      (result || firstNumber) &&
-      !secondNumber
-    ) {
+    if (typeButton === "operator" && !operator && (result || firstNumber) && !secondNumber) {
       operator = valueButton;
       button.classList.add("operator-select");
     }
 
-    if (
-      typeButton === "number" &&
-      !operator &&
-      (result || !result) &&
-      !secondNumber
-    ) {
+    if (typeButton === "number" && !operator && (result || !result) && !secondNumber) {
       if (result) {
         result = "";
         firstNumber = valueButton;
@@ -145,12 +131,7 @@ buttons.forEach((button) => {
       }
     }
 
-    if (
-      typeButton === "operator" &&
-      operator &&
-      (firstNumber || result) &&
-      !secondNumber
-    ) {
+    if (typeButton === "operator" && operator && (firstNumber || result) && !secondNumber) {
       let selectOperator = document.querySelector(".operator-select");
 
       if (selectOperator) {
