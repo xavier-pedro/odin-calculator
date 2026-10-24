@@ -1,28 +1,26 @@
 function operate(operator, firstNumber, secondNumber) {
   let result;
-  if ((operator === "/") & (firstNumber >= "0") && secondNumber === "0") {
-    return "Erro!";
-  } else {
-    switch (operator) {
-      case "+":
-        result = Number(firstNumber) + Number(secondNumber);
-        return isFloat(result);
-      case "-":
-        result = Number(firstNumber) - Number(secondNumber);
-        return isFloat(result);
-      case "*":
-        result = Number(firstNumber) * Number(secondNumber);
-        return isFloat(result);
-      case "/":
-        result = Number(firstNumber) / Number(secondNumber);
-        return isFloat(result);
-    }
+
+  switch (operator) {
+    case "+":
+      result = Number(firstNumber) + Number(secondNumber);
+      return formatResult(result);
+    case "-":
+      result = Number(firstNumber) - Number(secondNumber);
+      return formatResult(result);
+    case "*":
+      result = Number(firstNumber) * Number(secondNumber);
+      return formatResult(result);
+    case "/":
+      if(Number(secondNumber) === 0) return "Erro!";
+      result = Number(firstNumber) / Number(secondNumber);
+      return formatResult(result);
   }
 }
 
-function isFloat(result) {
+function formatResult(result) {
   if (!Number.isInteger(result)) {
-    return String(result.toFixed(2));
+    return String(parseFloat(result.toFixed(8)));
   } else {
     return String(result);
   }
@@ -44,7 +42,12 @@ buttons.forEach((button) => {
   let selectOperator = document.querySelector(".operator-select");
 
   button.addEventListener("click", () => {
-    if (typeButton === "result" && operator && (firstNumber || result) && secondNumber) {
+    if (
+      typeButton === "result" &&
+      operator &&
+      (firstNumber || result) &&
+      secondNumber
+    ) {
       if (firstNumber) {
         result = operate(operator, firstNumber, secondNumber);
       } else {
@@ -66,13 +69,16 @@ buttons.forEach((button) => {
       }
     }
 
-    if (typeButton === "operator" && operator && (firstNumber || result) && secondNumber) {
-      if(firstNumber){
-              result = operate(operator, firstNumber, secondNumber);
-
-      } else if (result){
-      result = operate(operator, result, secondNumber);
-
+    if (
+      typeButton === "operator" &&
+      operator &&
+      (firstNumber || result) &&
+      secondNumber
+    ) {
+      if (firstNumber) {
+        result = operate(operator, firstNumber, secondNumber);
+      } else if (result) {
+        result = operate(operator, result, secondNumber);
       }
       firstNumber = "";
       operator = valueButton;
@@ -86,12 +92,21 @@ buttons.forEach((button) => {
       }
     }
 
-    if (typeButton === "operator" && !operator && (result || firstNumber) && !secondNumber) {
+    if (
+      typeButton === "operator" &&
+      !operator &&
+      (result || firstNumber) &&
+      !secondNumber
+    ) {
       operator = valueButton;
       button.classList.add("operator-select");
     }
 
-    if (typeButton === "number" && !operator && (result || !result) && !secondNumber) {
+    if (
+      typeButton === "number" &&
+      !operator &&
+      !secondNumber
+    ) {
       if (result) {
         result = "";
         firstNumber = valueButton;
@@ -131,7 +146,12 @@ buttons.forEach((button) => {
       }
     }
 
-    if (typeButton === "operator" && operator && (firstNumber || result) && !secondNumber) {
+    if (
+      typeButton === "operator" &&
+      operator &&
+      (firstNumber || result) &&
+      !secondNumber
+    ) {
       let selectOperator = document.querySelector(".operator-select");
 
       if (selectOperator) {
