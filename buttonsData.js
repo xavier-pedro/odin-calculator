@@ -102,9 +102,9 @@ const buttonsData = [
     isIcon: false,
   },
   {
-    label: ",",
-    value: ",",
-    type: ",",
+    label: ".",
+    value: ".",
+    type: ".",
     isIcon: false,
   },
   {

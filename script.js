@@ -42,7 +42,7 @@ buttons.forEach((button) => {
   firstNumber = "";
   secondNumber = "";
   operator = "";
-  visor.textContent = result;
+  visor.textContent = result
   if(result === "Erro!"){
     result = "";
   }
@@ -117,29 +117,31 @@ buttons.forEach((button) => {
      button.classList.add("operator-select")
     }
 
-    if(typeButton === ","){
+    if(typeButton === "."){
         if(result && !operator && !secondNumber && !firstNumber){
-          firstNumber = "0,"
+          firstNumber = "0."
           visor.textContent = firstNumber;
           result = "";
         } else if(!firstNumber && !operator && !secondNumber && !result){
-          firstNumber = "0,"
-          visor.textContent = firstNumber
-        }else if (firstNumber && !operator && !secondNumber && !result) {
+          firstNumber = "0."
+          visor.textContent = firstNumber;
+          
+        } else if (firstNumber && !operator && !secondNumber && !result) {
 
-          if(!firstNumber.includes(",")){
-              firstNumber += ",";
-              visor.textContent = firstNumber;
+          if(!firstNumber.includes(".")){
+              firstNumber += ".";
+              visor.textContent = firstNumber
+              
           }
           
         } else if ((firstNumber || result) && operator && !secondNumber){
-          secondNumber = "0,"
-          visor.textContent = secondNumber;
+          secondNumber = "0."
+          visor.textContent = secondNumber
         } else if ((firstNumber || result) && operator && secondNumber){
 
-          if (!secondNumber.includes(",")) {
-            secondNumber += ",";
-            visor.textContent = secondNumber;
+          if (!secondNumber.includes(".")) {
+            secondNumber += ".";
+            visor.textContent = secondNumber
           }
           
         }
